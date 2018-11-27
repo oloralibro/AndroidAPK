@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Olor a Libro</string>
+    <string name="llibreries">Llibreries</string>
+    <string name="login">Login</string>
+    <string name="registro">Registrarse</string>
+    <string name="activitats">Actividades</string>
+    <string name="mapa">Mapa</string>
+    <string name="buscador">Buscar</string>
+    <string name="buscadorAct">Buscar Activitat</string>
+    <string name="buscadorLib">Buscar Llibreria</string>
+    <string name="buscar">Escribe aqui para buscar</string>
+    <string name="paswd">**********</string>
+    <string name="example">example@example.com</string>
+    <string name="user">Nombre de usuario</string>
+    <string name="perfil">Perfil</string>
+    <string name="registrarse">Pulsa aqui para ir al registro</string>
+    <string name="title_activity_mapa">Map</string>
+
+</resources>

@@ -1,0 +1,29 @@
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/grd_bg"
+    >
+    <EditText
+        android:id="@+id/etBuscadorLibreria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/buscar"
+        android:layout_marginTop="24dp"
+        style="@style/campo"/>
+    <Button
+        android:id="@+id/btnBuscarLibreria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buscadorLib"
+        android:layout_below="@+id/etBuscadorLibreria"
+        style="@style/botones"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnBuscarLibreria"
+        android:layout_marginTop="12dp"
+        style="@style/campo">
+
+    </ListView>
+</RelativeLayout>

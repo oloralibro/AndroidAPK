@@ -1,0 +1,67 @@
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/grd_bg"
+    >
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo_sgv"
+        android:layout_marginHorizontal="115dp"
+        android:layout_marginTop="8dp"
+        />
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivLogo"
+        android:layout_marginTop="48dp"
+        android:hint="@string/user"
+        style="@style/campo"
+        />
+
+    <EditText
+        android:id="@+id/etCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etNombre"
+        android:hint="@string/example"
+        style="@style/campo"
+        />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etCorreo"
+        android:hint="@string/paswd"
+        android:inputType="textPassword"
+        style="@style/campo"
+        />
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPassword"
+        android:hint="@string/paswd"
+        android:inputType="textPassword"
+        style="@style/campo"
+        />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etConfirmPassword"
+        android:layout_marginBottom="12dp"
+        android:text="@string/registro"
+        style="@style/botones"
+        />
+
+
+</RelativeLayout>
