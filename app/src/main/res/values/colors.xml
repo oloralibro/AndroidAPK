@@ -6,4 +6,7 @@
     <color name="gradStart">#BA55D3</color>
     <color name="gradStop">#23A7D8</color>
     <color name="logo">#000000</color>
+    <color name="texto">#E6E6FA</color>
+    <color name="fondoBotones">#855ed6</color>
+
 </resources>
