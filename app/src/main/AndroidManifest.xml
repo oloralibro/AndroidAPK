@@ -11,7 +11,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,19 +23,34 @@
 
         <activity
             android:name="Registro"
-            android:label="Registro">
-            <intent-filter>
-                <action android:name="android.intent.action.REGISTRO" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            android:label="Registro"
+            android:screenOrientation="portrait"
+            >
+
         </activity>
 
         <activity android:name="Menu"
-            android:label="@string/title_activity_mapa">
-            <intent-filter>
-                <action android:name="android.intent.action.MENU" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            android:label="Menu"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity android:name=".BuscadorActividad"
+            android:label="Buscador Actividad"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity android:name=".BuscadorLibreria"
+            android:label="Buscador Libreria"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity android:name=".Perfil"
+            android:label="Perfil"
+            android:screenOrientation="portrait"
+            >
         </activity>
     </application>
 

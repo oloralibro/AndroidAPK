@@ -1,10 +1,11 @@
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/grd_bg"
-    >
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/ivLogo"
@@ -42,6 +43,7 @@
         android:layout_below="@+id/etPassword"
         android:text="Login"
         style="@style/botones"
+        android:onClick="cambio"
         />
 
     <TextView
