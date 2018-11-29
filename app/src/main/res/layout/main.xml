@@ -2,6 +2,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:gravity="center"
+    android:orientation="vertical"
     android:background="@drawable/grd_bg"
     >
 

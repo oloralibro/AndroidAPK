@@ -1,26 +1,48 @@
 package com.paugonzalezmarti.www.oloralibro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        TextView registro = findViewById(R.id.tvRegistro);
+
+        //Instanciem els elements del login
+        TextView registro = (TextView) findViewById(R.id.tvRegistro);
         EditText usuario = findViewById(R.id.etCorreo);
         EditText contrasenya = findViewById(R.id.etPassword);
-        registro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.registro);
-            }
-        });
+        Button logearse = (Button) findViewById(R.id.btnLoguear);
+
+        //Obrim la pagina de registre al polsar al text de registre.
+        registro.setOnClickListener(this);
+
+        //Ens loguejarem
+        logearse.setOnClickListener(this);
     }
 
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+           case R.id.tvRegistro:
+                Intent registro = new Intent(view.getContext(),Registro.class);
+                startActivity(registro);
+                break;
+           case R.id.btnLoguear:
+                Intent menu = new Intent(this, Menu.class);
+                startActivityForResult(menu,0);
+                break;
+            default:
+                break;
+        }
+    }
 }
