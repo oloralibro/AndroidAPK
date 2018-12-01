@@ -24,7 +24,7 @@ public class Registro extends Activity {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
 
