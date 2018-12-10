@@ -13,34 +13,38 @@ public class Menu extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Button btnperfil = (Button) findViewById(R.id.btnPerfil);
-        Button btnlibrerias = (Button) findViewById(R.id.btnLibrerias);
-        Button btnactividades = (Button) findViewById(R.id.btnActividades);
+        Button btnPerfil = (Button) findViewById(R.id.btnPerfil);
+        Button btnLibrerias = (Button) findViewById(R.id.btnLibrerias);
+        Button btnActividades = (Button) findViewById(R.id.btnActividades);
 
-        btnperfil.setOnClickListener(this);
-        btnlibrerias.setOnClickListener(this);
-        btnactividades.setOnClickListener(this);
+        btnPerfil.setOnClickListener(this);
+        btnLibrerias.setOnClickListener(this);
+        btnActividades.setOnClickListener(this);
 
 
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btnPerfil:
-                Intent perfil = new Intent(this,Registro.class);
-                startActivity(perfil);
-                break;
-            case R.id.btnLibrerias:
-                Intent librerira = new Intent(this, BuscadorLibreria.class);
-                startActivity(librerira);
-                break;
-            case R.id.btnActividades:
-                Intent actividad = new Intent(this, BuscadorActividad.class);
-                startActivity(actividad);
-                break;
-            default:
-                break;
+        try{
+            switch (view.getId()) {
+                case R.id.btnPerfil:
+                    Intent perfil = new Intent(this, Perfil.class);
+                    startActivity(perfil);
+                    break;
+                case R.id.btnLibrerias:
+                    Intent librerira = new Intent(this, BuscadorLibreria.class);
+                    startActivity(librerira);
+                    break;
+                case R.id.btnActividades:
+                    Intent actividad = new Intent(this, BuscadorActividad.class);
+                    startActivity(actividad);
+                    break;
+                default:
+                    break;
+            }
+        }catch(Exception e){
+
         }
     }
 }

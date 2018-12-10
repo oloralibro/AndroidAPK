@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivLogo"
         android:layout_marginTop="40dp"
+        android:maxLines="1"
         android:hint="@string/example"
         style="@style/campo"
         />
@@ -43,7 +44,6 @@
         android:layout_below="@+id/etPassword"
         android:text="Login"
         style="@style/botones"
-        android:onClick="cambio"
         />
 
     <TextView

@@ -24,7 +24,8 @@ public class Registro extends Activity {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+               //todo Hay que guardar los datos primero y luego se cerrarà esta ventana
+                finish();
             }
         });
 
