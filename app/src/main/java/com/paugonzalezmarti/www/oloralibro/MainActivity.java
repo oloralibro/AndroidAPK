@@ -2,6 +2,7 @@ package com.paugonzalezmarti.www.oloralibro;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,8 +35,9 @@ public class MainActivity extends Activity  {
         Button logearse = (Button) findViewById(R.id.btnLoguear);
 
         //recuperem les dades de els usuaris per utilitzarlos despres
-        String json = "[{\"id\":1,\"superUsuario\":true,\"nombre\":\"eric\",\"correoElectronico\":\"eric@gmail.com\",\"contraseña\":\"eric\",\"puntuacionTotal\":9000,\"listaActividades\":[{\"id\":1,\"nombre\":\"Lectura de poesia\",\"descripcion\":\"Seran leidos eternos poemas clásicos de Gongora y Quevedo mientras ungimos nuestros cuerpos en sabiduria y convergemos en jolgorio.\",\"direccion\":\"\",\"puntos\":9000},{\"id\":2,\"nombre\":\"Cuenta cuentos\",\"descripcion\":\"Grandes voces narraran inmortales historias que nos enternecerán, alegrarán y cautivarán para siempre.\",\"direccion\":\"\",\"puntos\":9000},{\"id\":3,\"nombre\":\"prueba\",\"descripcion\":\"prueba \",\"direccion\":\"\",\"puntos\":0}]},{\"id\":2,\"superUsuario\":true,\"nombre\":\"jorge\",\"correoElectronico\":\"jorge@gmail.com\",\"contraseña\":\"jorge\",\"puntuacionTotal\":0,\"listaActividades\":[]},{\"id\":3,\"superUsuario\":true,\"nombre\":\"pau\",\"correoElectronico\":\"pau@gmail.com\",\"contraseña\":\"pau\",\"puntuacionTotal\":0,\"listaActividades\":[]},{\"id\":4,\"superUsuario\":false,\"nombre\":\"user\",\"correoElectronico\":\"user@gmail.com\",\"contraseña\":\"user\",\"puntuacionTotal\":0,\"listaActividades\":[]}]";
-        final Usuari[] usuaris = JsonManage.recuperarUsuaris(json);
+        //todo hay que leer el los datos del fichero
+
+        final Usuari[] usuaris = JsonManage.recuperarUsuaris();
         //Obrim la pagina de registre al polsar al text de registre.
        // registro.setOnClickListener(this);
 
