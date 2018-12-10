@@ -1,22 +1,41 @@
 package com.paugonzalezmarti.www.oloralibro;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Usuari {
+    @SerializedName("id")
+    private int id;
+    @SerializedName("nombre")
     private String nomUsuari;
+    @SerializedName("correoElectronico")
     private String correu;
+    @SerializedName("contraseña")
     private String contrasenya;
+    @SerializedName("puntuacionTotal")
     private int punts;
+    @SerializedName("listaActividades")
     private ArrayList<Activitat> activitats;
+    @SerializedName("superUsuario")
     private boolean administrador;
 
-    public Usuari(String nomUsuari, String correu, String contrasenya, int punts, ArrayList<Activitat> activitats, boolean administrador) {
+    public Usuari(int id, String nomUsuari, String correu, String contrasenya, int punts, ArrayList<Activitat> activitats, boolean administrador) {
+        this.id = id;
         this.nomUsuari = nomUsuari;
         this.correu = correu;
         this.contrasenya = contrasenya;
         this.punts = punts;
         this.activitats = activitats;
         this.administrador = administrador;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNomUsuari() {
@@ -70,7 +89,8 @@ public class Usuari {
     @Override
     public String toString() {
         return "Usuari{" +
-                "nomUsuari='" + nomUsuari + '\'' +
+                "id='" + id +
+                ", nomUsuari='" + nomUsuari + '\'' +
                 ", correu='" + correu + '\'' +
                 ", contrasenya='" + contrasenya + '\'' +
                 ", punts=" + punts +

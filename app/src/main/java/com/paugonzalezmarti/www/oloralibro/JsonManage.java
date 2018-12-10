@@ -4,11 +4,15 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class JsonManage {
 
-    public static Usuari recuperarUsuari(String json){
+    public static Usuari[] recuperarUsuaris(String json){
         Gson general = new Gson();
-        Usuari user = general.fromJson(json, Usuari.class);
+        ArrayList<Usuari> usuarios;
+
+        Usuari[] user = general.fromJson(json, Usuari[].class);
         return user;
     }
     public static String guardarUsuari(Usuari user){
@@ -16,9 +20,9 @@ public class JsonManage {
         String resposta = general.toJson(user);
         return resposta;
     }
-    public static Libreria recuperarLlibreria(String json){
+    public static Libreria[] recuperarLlibrerias(String json){
         Gson general = new Gson();
-        Libreria libreria = general.fromJson(json, Libreria.class);
+        Libreria[] libreria = general.fromJson(json, Libreria[].class);
         return libreria;
     }
     public static String guardarLlibreria(Libreria libreria){
@@ -26,9 +30,9 @@ public class JsonManage {
         String resposta = general.toJson(libreria);
         return resposta;
     }
-    public static Activitat recuperarActivitat(String json){
+    public static Activitat[] recuperarActivitats(String json){
         Gson general = new Gson();
-        Activitat activitat = general.fromJson(json, Activitat.class);
+        Activitat[] activitat = general.fromJson(json, Activitat[].class);
         return activitat;
     }
     public static String guardarActivitat(Activitat activitat){

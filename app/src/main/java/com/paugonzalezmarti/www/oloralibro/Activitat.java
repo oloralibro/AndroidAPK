@@ -1,27 +1,36 @@
 package com.paugonzalezmarti.www.oloralibro;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Activitat {
+    @SerializedName("id")
+    private int id;
+    @SerializedName("nombre")
     private String nom;
-    private String tipus;
+
+    @SerializedName("direccion")
     private String ubicacio;
+    @SerializedName("descripcion")
     private String descripcio;
+    @SerializedName("puntos")
     private int punts;
 
-    public Activitat(String nom, String tipus, String ubicacio, String descripcio, int punts) {
+    public Activitat(int id, String nom, String ubicacio, String descripcio, int punts) {
+        this.id = id;
         this.nom = nom;
-        this.tipus = tipus;
         this.ubicacio = ubicacio;
         this.descripcio = descripcio;
         this.punts = punts;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNom() {
         return nom;
     }
 
-    public String getTipus() {
-        return tipus;
-    }
 
     public String getUbicacio() {
         return ubicacio;
@@ -38,8 +47,8 @@ public class Activitat {
     @Override
     public String toString() {
         return "Activitat{" +
-                "nom='" + nom + '\'' +
-                ", tipus='" + tipus + '\'' +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
                 ", ubicacio='" + ubicacio + '\'' +
                 ", descripcio='" + descripcio + '\'' +
                 ", punts=" + punts +

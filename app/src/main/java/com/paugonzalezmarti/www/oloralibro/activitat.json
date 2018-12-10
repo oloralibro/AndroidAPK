@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombre": "Lectura de poesia",
+    "descripcion": "Seran leidos eternos poemas clásicos de Gongora y Quevedo mientras ungimos nuestros cuerpos en sabiduria y convergemos en jolgorio.",
+    "direccion": "",
+    "puntos": 9000
+  },
+  {
+    "id": 2,
+    "nombre": "Cuenta cuentos",
+    "descripcion": "Grandes voces narraran inmortales historias que nos enternecerán, alegrarán y cautivarán para siempre.",
+    "direccion": "",
+    "puntos": 9000
+  },
+  {
+    "id": 3,
+    "nombre": "prueba",
+    "descripcion": "prueba ",
+    "direccion": "",
+    "puntos": 0
+  }
+]

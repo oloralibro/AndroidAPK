@@ -1,20 +1,34 @@
 package com.paugonzalezmarti.www.oloralibro;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Libreria {
+    @SerializedName("id")
+    private int id;
+    @SerializedName("nombre")
     private String nom;
+    @SerializedName("direccion")
     private String direccio;
+    //todo cal revisar el json nou
     private String horais;
+    @SerializedName("numeroTelefono")
     private int telefon;
+    @SerializedName("listaActividades")
     private ArrayList<Activitat> activitats;
 
-    public Libreria(String nom, String direccio, String horais, int telefon, ArrayList<Activitat> activitats) {
+    public Libreria(int id, String nom, String direccio, String horais, int telefon, ArrayList<Activitat> activitats) {
+        this.id = id;
         this.nom = nom;
         this.direccio = direccio;
         this.horais = horais;
         this.telefon = telefon;
         this.activitats = activitats;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNom() {
@@ -40,7 +54,8 @@ public class Libreria {
     @Override
     public String toString() {
         return "Libreria{" +
-                "nom='" + nom + '\'' +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
                 ", direccio='" + direccio + '\'' +
                 ", horais='" + horais + '\'' +
                 ", telefon=" + telefon +
