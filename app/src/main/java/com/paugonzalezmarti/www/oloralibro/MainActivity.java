@@ -1,8 +1,12 @@
 package com.paugonzalezmarti.www.oloralibro;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +27,7 @@ import java.io.InputStreamReader;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class MainActivity extends Activity  {
-
+    private final int REQUEST_ACCES_FINE = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +40,12 @@ public class MainActivity extends Activity  {
 
         //recuperem les dades de els usuaris per utilitzarlos despres
         //todo hay que leer el los datos del fichero
-
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_ACCES_FINE);
+        }
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_ACCES_FINE);
+        }
         final Usuari[] usuaris = JsonManage.recuperarUsuaris();
         //Obrim la pagina de registre al polsar al text de registre.
        // registro.setOnClickListener(this);
@@ -50,7 +59,9 @@ public class MainActivity extends Activity  {
                 boolean correcto = false;
                 boolean existe = false;
                 boolean noexiste = false;
-                if ((user.isEmpty() && (pass.isEmpty()))){
+
+
+                    if ((user.isEmpty() && (pass.isEmpty()))){
                     Toast.makeText(MainActivity.this, "Siusplau introdueix un usuari i una contrasenya", LENGTH_SHORT).show();
 
                 }
@@ -91,6 +102,18 @@ public class MainActivity extends Activity  {
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        super.onRequestPermissionsResult(requestCode,permissions, grantResults);
+        if (requestCode == REQUEST_ACCES_FINE ){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this,"Permiso Concedido", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this,"Permiso Denegado", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
 
    /* @Override
     public void onClick(View view) {
