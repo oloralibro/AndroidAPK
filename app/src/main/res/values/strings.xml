@@ -17,5 +17,7 @@
     <string name="title_activity_mapa">Map</string>
     <string name="usuari.json">app\\java\\com.paugo\\com\\te</string>
     <string name="fer_activitat">Fer Activitat</string>
+    <string name="editar">Editar</string>
+    <string name="actividades_realizadas">Actividades realizadas:"</string>
 
 </resources>

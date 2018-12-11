@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:layout_gravity="center_vertical"
-            android:text="120"
+            android:hint="120"
             android:textSize="20sp"/>
 
         <CheckBox
@@ -49,6 +49,7 @@
             android:layout_weight="1"
             android:text="SuperUser"
             android:textSize="20sp"
+            android:clickable="false"
             />
 
     </LinearLayout>
@@ -73,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="example@gmail.com"
+            android:hint="@string/example"
             android:layout_gravity="center"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"/>
@@ -100,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="contraseña123"
+            android:hint="@string/paswd"
             android:textSize="20sp"
             android:layout_margin="10dp"
             android:layout_gravity="center"/>
@@ -113,7 +114,7 @@
         android:layout_weight="0.5"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:text="Actividades realizadas:"
+        android:text="@string/actividades_realizadas"
         android:textSize="20sp"
         android:textStyle="bold"/>
 
@@ -138,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:text="Editar"
+            android:text="@string/editar"
             android:layout_gravity="bottom"/>
 
         <Button
