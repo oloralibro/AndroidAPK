@@ -37,9 +37,7 @@ public class MainActivity extends Activity  {
         final EditText usuario = findViewById(R.id.etCorreo);
         final EditText contrasenya = findViewById(R.id.etPassword);
         Button logearse = (Button) findViewById(R.id.btnLoguear);
-
         //recuperem les dades de els usuaris per utilitzarlos despres
-        //todo hay que leer el los datos del fichero
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_ACCES_FINE);
         }
@@ -59,7 +57,7 @@ public class MainActivity extends Activity  {
                 boolean correcto = false;
                 boolean existe = false;
                 boolean noexiste = false;
-
+                int id = 0;
 
                     if ((user.isEmpty() && (pass.isEmpty()))){
                     Toast.makeText(MainActivity.this, "Siusplau introdueix un usuari i una contrasenya", LENGTH_SHORT).show();
@@ -71,14 +69,15 @@ public class MainActivity extends Activity  {
                 }else if (pass.isEmpty()){
                     Toast.makeText(MainActivity.this, "Siusplau introdueix una contrasenya", LENGTH_SHORT).show();
 
-                }else if((!pass.isEmpty())&&(!user.isEmpty())){
+                }else if((!pass.isEmpty())&&(!user.isEmpty())) {
+                        int i = 0;
                     for (Usuari item : usuaris) {
                         //mostrar que el usuari i o la contraseña es incorrecte
                         String iUsuari = item.getNomUsuari().toString();
                         String iContrasenya = item.getContrasenya().toString();
                         if ((user.equals(iUsuari)) && (pass.equals(iContrasenya))) {
                             correcto = true;
-
+                            id = i;
                         }
                         if(user.equals(iUsuari)&&(!pass.equals(iContrasenya))){
                             existe=true;
@@ -86,14 +85,17 @@ public class MainActivity extends Activity  {
                         if(!user.equals(iUsuari)&&(!pass.equals(iContrasenya))){
                             noexiste=true;
                         }
+                        i++;
                     }
 
-                    if (correcto==true){
+                    if (correcto==true) {
+                        Usuari usuari = usuaris[i];
                         Intent menu = new Intent(MainActivity.this, Menu.class);
+                        //menu.putExtra(usuari );
                         startActivity(menu);
-                    }else if(existe==true){
+                    }else if(existe==true) {
                         Toast.makeText(MainActivity.this, "La contraseña es incorrecte", LENGTH_SHORT).show();
-                    } else if(noexiste==true){
+                    } else if(noexiste==true) {
                         Toast.makeText(MainActivity.this, "El usuari no existex a la nostra base de dades", LENGTH_SHORT).show();
                     }
                 }
@@ -103,9 +105,9 @@ public class MainActivity extends Activity  {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode,permissions, grantResults);
-        if (requestCode == REQUEST_ACCES_FINE ){
+        if (requestCode == REQUEST_ACCES_FINE ) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this,"Permiso Concedido", Toast.LENGTH_SHORT).show();
             }else{

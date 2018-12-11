@@ -1,7 +1,154 @@
-<RelativeLayout android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="@drawable/grd_bg"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_perfil_NameUser"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.5"
+        android:text="NameUser"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="Puntos:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tv_perfil_Puntos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:text="120"
+            android:textSize="20sp"/>
+
+        <CheckBox
+            android:id="@+id/cb_perfil_SuperUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="SuperUser"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_perfil_Correo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="example@gmail.com"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contraseña: "
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:id="@+id/tv_perfil_Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="contraseña123"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:text="Actividades realizadas:"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <ListView
+        android:id="@+id/lv_perfil_Actividades"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_gravity="center">
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_perfil_Editar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="Editar"
+            android:layout_gravity="bottom"/>
+
+        <Button
+            android:id="@+id/button_perfil_OK"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:text="Ok"/>
+    </LinearLayout>
+
+</LinearLayout>

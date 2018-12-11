@@ -42,10 +42,8 @@ public class JsonManage {
                 user = general.fromJson(json, Usuari[].class);
 
             } catch (FileNotFoundException e) {
-                // TODO: handle exception
                 e.printStackTrace();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             finally{
@@ -53,7 +51,6 @@ public class JsonManage {
                     try {
                         reader.close();
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
@@ -90,10 +87,8 @@ public class JsonManage {
                 libreria = general.fromJson(jason, Libreria[].class);
 
             } catch (FileNotFoundException e) {
-                // TODO: handle exception
                 e.printStackTrace();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             finally{
@@ -101,7 +96,6 @@ public class JsonManage {
                     try {
                         reader.close();
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
@@ -137,10 +131,8 @@ public class JsonManage {
                 activitat = general.fromJson(jason, Activitat[].class);
 
             } catch (FileNotFoundException e) {
-                // TODO: handle exception
                 e.printStackTrace();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             finally{
@@ -148,7 +140,6 @@ public class JsonManage {
                     try {
                         reader.close();
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }

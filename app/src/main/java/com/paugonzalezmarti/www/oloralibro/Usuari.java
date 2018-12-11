@@ -87,6 +87,11 @@ public class Usuari {
     }
 
     @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
     public String toString() {
         return "Usuari{" +
                 "id='" + id +
