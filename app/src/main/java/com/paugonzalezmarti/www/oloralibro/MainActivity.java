@@ -91,7 +91,9 @@ public class MainActivity extends Activity  {
                     if (correcto==true) {
                         Usuari usuari = usuaris[i];
                         Intent menu = new Intent(MainActivity.this, Menu.class);
-                        //menu.putExtra(usuari );
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("usuario",usuari);
+                        menu.putExtras(bundle);
                         startActivity(menu);
                     }else if(existe==true) {
                         Toast.makeText(MainActivity.this, "La contraseña es incorrecte", LENGTH_SHORT).show();

@@ -2,9 +2,10 @@ package com.paugonzalezmarti.www.oloralibro;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Usuari {
+public class Usuari implements Serializable{
     @SerializedName("id")
     private int id;
     @SerializedName("nombre")

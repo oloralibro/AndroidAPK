@@ -16,5 +16,6 @@
     <string name="registrarse">Pulsa aqui para ir al registro</string>
     <string name="title_activity_mapa">Map</string>
     <string name="usuari.json">app\\java\\com.paugo\\com\\te</string>
+    <string name="fer_activitat">Fer Activitat</string>
 
 </resources>
