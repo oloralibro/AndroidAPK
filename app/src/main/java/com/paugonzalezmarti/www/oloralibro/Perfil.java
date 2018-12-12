@@ -20,10 +20,10 @@ public class Perfil extends Activity {
 
         if (objetoEnviado!=null){
             user = (Usuari) objetoEnviado.getSerializable("usuario");
-    //todo cal mirar perque no carega les dades i no deixa obrir la vista
-        puntos.setText(user.getPunts());
-        nombre.setText(user.getNomUsuari());
-        correu.setText(user.getCorreu());
+            //todo cal mirar perque no carega les dades i no deixa obrir la vista
+            puntos.setText(""+ user.getPunts());
+            nombre.setText(user.getNomUsuari().toUpperCase());
+            correu.setText(user.getCorreu());
         }
 
     }
