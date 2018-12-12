@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class JsonManage {
 
+    //<editor-fold desc="Usuaris">
     public static ArrayList<Usuari> recuperarUsuaris() {
         String state = Environment.getExternalStorageState();
         Gson general = new Gson();
@@ -69,7 +70,6 @@ public class JsonManage {
         String resposta = general.toJson(users);
         String state = Environment.getExternalStorageState();
         String json = null;
-        Usuari[] user = new Usuari[0];
         if (!(state.equals(Environment.MEDIA_MOUNTED))) {
         } else {
             BufferedWriter writer = null;
@@ -93,34 +93,38 @@ public class JsonManage {
             }
         }
     }
-  /*  public static Libreria[] recuperarLlibrerias(String json){
+    //</editor-fold>
+
+    //<editor-fold desc="Librerias">
+    public static ArrayList<Libreria> recuperarLlibreries() {
         String state = Environment.getExternalStorageState();
-        Gson recuperarllibreria = new Gson();
-        String jason = null;
-        Libreria[] libreria = new Libreria[0];
+        Gson general = new Gson();
+        String json = null;
+        ArrayList<Libreria> libreria = new ArrayList<Libreria>();
         if (!(state.equals(Environment.MEDIA_MOUNTED))) {
         } else {
             BufferedReader reader = null;
             try {
                 File file = Environment.getExternalStorageDirectory();
-                File textFile = new File(file.getAbsolutePath()+File.separator + "LibreriasRegistrados.json");
+                File textFile = new File(file.getAbsolutePath() + File.separator + "LibreriasRegistradas.json");
                 reader = new BufferedReader(new FileReader(textFile));
                 StringBuilder textBuilder = new StringBuilder();
                 String line;
-                while((line = reader.readLine()) != null) {
+                while ((line = reader.readLine()) != null) {
                     textBuilder.append(line);
                     textBuilder.append("\n");
                     json = textBuilder.toString();
                 }
-                libreria = recuperarllibreria.fromJson(jason, Libreria[].class);
-
+                Libreria[] usuaris = general.fromJson(json, Libreria[].class);
+                for(Libreria u : usuaris){
+                    libreria.add(u);
+                }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            finally{
-                if(reader != null){
+            } finally {
+                if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {
@@ -130,41 +134,70 @@ public class JsonManage {
             }
 
         }
+
         return libreria;
     }
-    public static String guardarLlibreria(Libreria libreria){
+
+    public static void guardarLlibreries(ArrayList<Libreria> users) {
         Gson general = new Gson();
-        String resposta = general.toJson(libreria);
-        return resposta;
+        String resposta = general.toJson(users);
+        String state = Environment.getExternalStorageState();
+        String json = null;
+        if (!(state.equals(Environment.MEDIA_MOUNTED))) {
+        } else {
+            BufferedWriter writer = null;
+            try {
+                File file = Environment.getExternalStorageDirectory();
+                File textFile = new File(file.getAbsolutePath() + File.separator + "LibreriasRegistradas.json");
+                writer = new BufferedWriter(new FileWriter(textFile));
+                writer.write(resposta);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (writer != null) {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
-    public static Activitat[] recuperarActivitats(String json){
+    //</editor-fold>
+
+    //<editor-fold desc="Activitats" >
+    public static ArrayList<Activitat> recuperarActivitats() {
         String state = Environment.getExternalStorageState();
         Gson general = new Gson();
-        String jason = null;
-        Activitat[] activitat = new Activitat[0];
+        String json = null;
+        ArrayList<Activitat> user = new ArrayList<Activitat>();
         if (!(state.equals(Environment.MEDIA_MOUNTED))) {
         } else {
             BufferedReader reader = null;
             try {
                 File file = Environment.getExternalStorageDirectory();
-                File textFile = new File(file.getAbsolutePath()+File.separator + "ActividadesRegistrados.json");
+                File textFile = new File(file.getAbsolutePath() + File.separator + "ActividadesRegistradas.json");
                 reader = new BufferedReader(new FileReader(textFile));
                 StringBuilder textBuilder = new StringBuilder();
                 String line;
-                while((line = reader.readLine()) != null) {
+                while ((line = reader.readLine()) != null) {
                     textBuilder.append(line);
                     textBuilder.append("\n");
                     json = textBuilder.toString();
                 }
-                activitat = general.fromJson(jason, Activitat[].class);
-
+                Activitat[] usuaris = general.fromJson(json, Activitat[].class);
+                for(Activitat u : usuaris){
+                    user.add(u);
+                }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            finally{
-                if(reader != null){
+            } finally {
+                if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {
@@ -174,13 +207,38 @@ public class JsonManage {
             }
 
         }
-        return activitat;
+
+        return user;
     }
-    public static String guardarActivitat(Activitat activitat){
+
+    public static void guardarActivitats(ArrayList<Activitat> users) {
         Gson general = new Gson();
-        String resposta = general.toJson(activitat);
-        return resposta;
+        String resposta = general.toJson(users);
+        String state = Environment.getExternalStorageState();
+        String json = null;
+        if (!(state.equals(Environment.MEDIA_MOUNTED))) {
+        } else {
+            BufferedWriter writer = null;
+            try {
+                File file = Environment.getExternalStorageDirectory();
+                File textFile = new File(file.getAbsolutePath() + File.separator + "ActividadesRegistradas.json");
+                writer = new BufferedWriter(new FileWriter(textFile));
+                writer.write(resposta);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (writer != null) {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
-    */
+    //</editor-fold>
 
 }

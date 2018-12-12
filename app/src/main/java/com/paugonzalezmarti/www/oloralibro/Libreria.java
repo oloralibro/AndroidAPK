@@ -11,7 +11,7 @@ public class Libreria {
     private String nom;
     @SerializedName("direccion")
     private String direccio;
-    //todo cal revisar el json nou
+    @SerializedName("horario")
     private String horais;
     @SerializedName("numeroTelefono")
     private int telefon;

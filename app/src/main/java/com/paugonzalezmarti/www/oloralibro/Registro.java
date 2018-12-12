@@ -31,7 +31,6 @@ public class Registro extends Activity {
         final Bundle objetoEnviado = getIntent().getExtras();
 
         if (objetoEnviado != null) {
-//todo mirar perque no recull l'arraylist d'usuaris
             total = (ArrayList<Usuari>) objetoEnviado.getSerializable("total");
         }
 
@@ -61,7 +60,7 @@ public class Registro extends Activity {
 
                 } else if ((!contra.isEmpty()) && (!nomusuari.isEmpty())) {
                     if (contra.equals(recontra) == true) {
-                        int id = finalTotal.size() + 1;//todo si el id comença de 0 s'haura de treure el + 1
+                        int id = finalTotal.size() + 1;//Si el id comença de 0 s'haura de treure el + 1
                         user = new Usuari(id, nomusuari, email, contra);
                         for (Usuari item : finalTotal) {
                             if (item.getNomUsuari().toString().equals(nomusuari.toString())) {
@@ -71,6 +70,9 @@ public class Registro extends Activity {
                             if (item.getCorreu().toString().equals(email.toString())) {
                                 existe = true;
                                 Toast.makeText(Registro.this, "El correu ja existeix!", Toast.LENGTH_SHORT).show();
+                            }
+                            if (item.getId()==id) {//Si el id ja existeix anem incrementant-lo fins que no ho sigui.
+                                id++;
                             }
                         }
                         if (existe == false) {
