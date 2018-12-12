@@ -30,9 +30,9 @@ public class Registro extends Activity {
         ArrayList<Usuari> total = null;
         final Bundle objetoEnviado = getIntent().getExtras();
 
-        if (objetoEnviado!=null){
+        if (objetoEnviado != null) {
 //todo mirar perque no recull l'arraylist d'usuaris
-            total = (ArrayList<Usuari>) objetoEnviado.getSerializable("usuario");
+            total = (ArrayList<Usuari>) objetoEnviado.getSerializable("total");
         }
 
         final ArrayList<Usuari> finalTotal = total;
@@ -40,7 +40,7 @@ public class Registro extends Activity {
             @Override
             public void onClick(View view) {
                 Usuari user = null;
-                Boolean existe = null;
+                Boolean existe = false;
                 String nomusuari = usuario.getText().toString();
                 String email = correo.getText().toString();
                 String contra = contrasenya.getText().toString();
@@ -61,8 +61,7 @@ public class Registro extends Activity {
 
                 } else if ((!contra.isEmpty()) && (!nomusuari.isEmpty())) {
                     if (contra.equals(recontra) == true) {
-                        int id = finalTotal.size() + 1;
-                        //todo Peta per algun lloc cal debugar
+                        int id = finalTotal.size() + 1;//todo si el id comença de 0 s'haura de treure el + 1
                         user = new Usuari(id, nomusuari, email, contra);
                         for (Usuari item : finalTotal) {
                             if (item.getNomUsuari().toString().equals(nomusuari.toString())) {
@@ -74,15 +73,16 @@ public class Registro extends Activity {
                                 Toast.makeText(Registro.this, "El correu ja existeix!", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        if (existe = false) {
+                        if (existe == false) {
+                            finalTotal.add(user);
                             JsonManage.guardarUsuaris(finalTotal);
                             Toast.makeText(Registro.this, "El usuari s'ha creat amb exit!", Toast.LENGTH_LONG).show();
                             finish();
                         }
 
-                    } else
+                    } else {
                         Toast.makeText(Registro.this, "Les contrasenyes no coincideixen", Toast.LENGTH_LONG).show();
-
+                    }
 
                 }
             }

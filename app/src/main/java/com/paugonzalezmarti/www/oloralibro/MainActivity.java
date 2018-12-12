@@ -23,11 +23,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class MainActivity extends Activity  {
     private final int REQUEST_ACCES_FINE = 0;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onCreate(null);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,14 +45,20 @@ public class MainActivity extends Activity  {
         final EditText usuario = findViewById(R.id.etCorreo);
         final EditText contrasenya = findViewById(R.id.etPassword);
         Button logearse = (Button) findViewById(R.id.btnLoguear);
+        final Usuari[] usuaris = JsonManage.recuperarUsuaris();
+        final ArrayList<Usuari> total = new ArrayList<>();
         //recuperem les dades de els usuaris per utilitzarlos despres
+        for(Usuari u : usuaris){
+            total.add(u);
+        }
+
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_ACCES_FINE);
         }
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_ACCES_FINE);
         }
-        final Usuari[] usuaris = JsonManage.recuperarUsuaris();
+
         //Obrim la pagina de registre al polsar al text de registre.
 
         //Ens loguejarem
@@ -101,11 +115,14 @@ public class MainActivity extends Activity  {
                 }
             }
         });
+
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent registro = new Intent(MainActivity.this,Registro.class);
-                registro.putExtra("total",usuaris);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("total",total);
+                registro.putExtras(bundle);
                 startActivity(registro);
             }
         });
@@ -123,6 +140,4 @@ public class MainActivity extends Activity  {
             }
         }
     }
-
-
 }

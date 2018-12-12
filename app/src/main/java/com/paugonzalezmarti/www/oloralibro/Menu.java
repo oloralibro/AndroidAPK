@@ -7,22 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Menu extends Activity  {
+public class Menu extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Usuari user= null;
+        Usuari user = null;
         Button btnPerfil = (Button) findViewById(R.id.btnPerfil);
         Button btnLibrerias = (Button) findViewById(R.id.btnLibrerias);
         Button btnActividades = (Button) findViewById(R.id.btnActividades);
 
         final Bundle objetoEnviado = getIntent().getExtras();
-        if (objetoEnviado!=null){
+        if (objetoEnviado != null) {
             user = (Usuari) objetoEnviado.getSerializable("usuario");
-            objetoEnviado.putSerializable("usuario",user);
+            objetoEnviado.putSerializable("usuario", user);
         }
 
         btnPerfil.setOnClickListener(new View.OnClickListener() {

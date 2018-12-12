@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class JsonManage {
 
-    public static Usuari[] recuperarUsuaris(){
+    public static Usuari[] recuperarUsuaris() {
         String state = Environment.getExternalStorageState();
         Gson general = new Gson();
         String json = null;
@@ -32,11 +32,11 @@ public class JsonManage {
             BufferedReader reader = null;
             try {
                 File file = Environment.getExternalStorageDirectory();
-                File textFile = new File(file.getAbsolutePath()+File.separator + "UsuariosRegistrados.json");
+                File textFile = new File(file.getAbsolutePath() + File.separator + "UsuariosRegistrados.json");
                 reader = new BufferedReader(new FileReader(textFile));
                 StringBuilder textBuilder = new StringBuilder();
                 String line;
-                while((line = reader.readLine()) != null) {
+                while ((line = reader.readLine()) != null) {
                     textBuilder.append(line);
                     textBuilder.append("\n");
                     json = textBuilder.toString();
@@ -47,9 +47,8 @@ public class JsonManage {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            finally{
-                if(reader != null){
+            } finally {
+                if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {
@@ -62,7 +61,8 @@ public class JsonManage {
 
         return user;
     }
-    public static void guardarUsuaris(ArrayList<Usuari> users){
+
+    public static void guardarUsuaris(ArrayList<Usuari> users) {
         Gson general = new Gson();
         String resposta = general.toJson(users);
         String state = Environment.getExternalStorageState();
@@ -75,10 +75,7 @@ public class JsonManage {
                 File file = Environment.getExternalStorageDirectory();
                 File textFile = new File(file.getAbsolutePath() + File.separator + "UsuariosRegistrados.json");
                 writer = new BufferedWriter(new FileWriter(textFile));
-
-                while (users != null) {
-                    writer.write(resposta);
-                }
+                writer.write(resposta);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
