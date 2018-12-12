@@ -14,6 +14,7 @@ public class Perfil extends Activity {
         TextView puntos = findViewById(R.id.tv_perfil_Puntos);
         TextView nombre = findViewById(R.id.tv_perfil_NameUser);
         TextView correu = findViewById(R.id.tv_perfil_Correo);
+        TextView contra = findViewById(R.id.tv_perfil_Password);
 
         Usuari user = null;
         final Bundle objetoEnviado = getIntent().getExtras();
@@ -24,6 +25,13 @@ public class Perfil extends Activity {
             puntos.setText(""+ user.getPunts());
             nombre.setText(user.getNomUsuari().toUpperCase());
             correu.setText(user.getCorreu());
+            String paswd = user.getContrasenya();
+            char[] nice = paswd.toCharArray();
+            for (int i=0; i < (user.getContrasenya().length() - 3); i++){
+                nice[i]='*';
+            }
+            paswd = nice.toString();
+            contra.setText(paswd);
         }
 
     }
