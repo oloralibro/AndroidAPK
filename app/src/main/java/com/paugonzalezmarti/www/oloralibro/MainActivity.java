@@ -46,7 +46,6 @@ public class MainActivity extends Activity  {
         }
         final Usuari[] usuaris = JsonManage.recuperarUsuaris();
         //Obrim la pagina de registre al polsar al text de registre.
-       // registro.setOnClickListener(this);
 
         //Ens loguejarem
         logearse.setOnClickListener(new View.OnClickListener() {
@@ -59,18 +58,17 @@ public class MainActivity extends Activity  {
                 boolean noexiste = false;
                 int id = 0;
 
-                    if ((user.isEmpty() && (pass.isEmpty()))){
+                if ((user.isEmpty() && (pass.isEmpty()))) {
                     Toast.makeText(MainActivity.this, "Siusplau introdueix un usuari i una contrasenya", LENGTH_SHORT).show();
 
-                }
-                else if (user.isEmpty()){
+                } else if (user.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Siusplau introdueix un usuari", LENGTH_SHORT).show();
 
-                }else if (pass.isEmpty()){
+                } else if (pass.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Siusplau introdueix una contrasenya", LENGTH_SHORT).show();
 
-                }else if((!pass.isEmpty())&&(!user.isEmpty())) {
-                        int i = 0;
+                } else if((!pass.isEmpty())&&(!user.isEmpty())) {
+                    int i = 0;
                     for (Usuari item : usuaris) {
                         //mostrar que el usuari i o la contraseña es incorrecte
                         String iUsuari = item.getNomUsuari().toString();
@@ -89,7 +87,7 @@ public class MainActivity extends Activity  {
                     }
 
                     if (correcto==true) {
-                        Usuari usuari = usuaris[i];
+                        Usuari usuari = usuaris[id];
                         Intent menu = new Intent(MainActivity.this, Menu.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("usuario",usuari);
@@ -101,7 +99,14 @@ public class MainActivity extends Activity  {
                         Toast.makeText(MainActivity.this, "El usuari no existex a la nostra base de dades", LENGTH_SHORT).show();
                     }
                 }
-
+            }
+        });
+        registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registro = new Intent(MainActivity.this,Registro.class);
+                registro.putExtra("total",usuaris);
+                startActivity(registro);
             }
         });
     }
@@ -119,21 +124,5 @@ public class MainActivity extends Activity  {
         }
     }
 
-   /* @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-           case R.id.tvRegistro:
-
-                Intent registro = new Intent(this,Registro.class);
-                startActivity(registro);
-                break;
-          case R.id.btnLoguear:
-                Intent menu = new Intent(this, Menu.class);
-                startActivity(menu);
-                break;
-            default:
-                break;
-        }
-    }*/
 
 }

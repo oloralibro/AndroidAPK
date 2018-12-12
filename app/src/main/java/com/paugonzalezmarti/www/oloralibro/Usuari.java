@@ -21,14 +21,14 @@ public class Usuari implements Serializable{
     @SerializedName("superUsuario")
     private boolean administrador;
 
-    public Usuari(int id, String nomUsuari, String correu, String contrasenya, int punts, ArrayList<Activitat> activitats, boolean administrador) {
+    public Usuari(int id, String nomUsuari, String correu, String contrasenya) {
         this.id = id;
         this.nomUsuari = nomUsuari;
         this.correu = correu;
         this.contrasenya = contrasenya;
-        this.punts = punts;
-        this.activitats = activitats;
-        this.administrador = administrador;
+        this.punts = 0;
+        this.activitats = new ArrayList<Activitat>();
+        this.administrador = false;
     }
 
     public int getId() {

@@ -12,9 +12,11 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -60,14 +62,41 @@ public class JsonManage {
 
         return user;
     }
-    public static String guardarUsuari(Usuari user){
+    public static void guardarUsuaris(ArrayList<Usuari> users){
         Gson general = new Gson();
-        String resposta = general.toJson(user);
-        return resposta;
-    }
-    public static Libreria[] recuperarLlibrerias(String json){
+        String resposta = general.toJson(users);
         String state = Environment.getExternalStorageState();
-        Gson general = new Gson();
+        String json = null;
+        Usuari[] user = new Usuari[0];
+        if (!(state.equals(Environment.MEDIA_MOUNTED))) {
+        } else {
+            BufferedWriter writer = null;
+            try {
+                File file = Environment.getExternalStorageDirectory();
+                File textFile = new File(file.getAbsolutePath() + File.separator + "UsuariosRegistrados.json");
+                writer = new BufferedWriter(new FileWriter(textFile));
+
+                while (users != null) {
+                    writer.write(resposta);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (writer != null) {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+  /*  public static Libreria[] recuperarLlibrerias(String json){
+        String state = Environment.getExternalStorageState();
+        Gson recuperarllibreria = new Gson();
         String jason = null;
         Libreria[] libreria = new Libreria[0];
         if (!(state.equals(Environment.MEDIA_MOUNTED))) {
@@ -84,7 +113,7 @@ public class JsonManage {
                     textBuilder.append("\n");
                     json = textBuilder.toString();
                 }
-                libreria = general.fromJson(jason, Libreria[].class);
+                libreria = recuperarllibreria.fromJson(jason, Libreria[].class);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -153,5 +182,6 @@ public class JsonManage {
         String resposta = general.toJson(activitat);
         return resposta;
     }
+    */
 
 }
