@@ -45,12 +45,9 @@ public class MainActivity extends Activity  {
         final EditText usuario = findViewById(R.id.etCorreo);
         final EditText contrasenya = findViewById(R.id.etPassword);
         Button logearse = (Button) findViewById(R.id.btnLoguear);
-        final Usuari[] usuaris = JsonManage.recuperarUsuaris();
-        final ArrayList<Usuari> total = new ArrayList<>();
+        final ArrayList<Usuari> usuaris = JsonManage.recuperarUsuaris();
         //recuperem les dades de els usuaris per utilitzarlos despres
-        for(Usuari u : usuaris){
-            total.add(u);
-        }
+
 
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_ACCES_FINE);
@@ -83,13 +80,14 @@ public class MainActivity extends Activity  {
 
                 } else if((!pass.isEmpty())&&(!user.isEmpty())) {
                     int i = 0;
+                    Usuari usuari= null;
                     for (Usuari item : usuaris) {
                         //mostrar que el usuari i o la contraseña es incorrecte
                         String iUsuari = item.getNomUsuari().toString();
                         String iContrasenya = item.getContrasenya().toString();
                         if ((user.equals(iUsuari)) && (pass.equals(iContrasenya))) {
                             correcto = true;
-                            id = i;
+                            usuari = item;
                         }
                         if(user.equals(iUsuari)&&(!pass.equals(iContrasenya))){
                             existe=true;
@@ -101,7 +99,6 @@ public class MainActivity extends Activity  {
                     }
 
                     if (correcto==true) {
-                        Usuari usuari = usuaris[id];
                         Intent menu = new Intent(MainActivity.this, Menu.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("usuario",usuari);
@@ -121,7 +118,7 @@ public class MainActivity extends Activity  {
             public void onClick(View view) {
                 Intent registro = new Intent(MainActivity.this,Registro.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("total",total);
+                bundle.putSerializable("total",usuaris);
                 registro.putExtras(bundle);
                 startActivity(registro);
             }

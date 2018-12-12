@@ -22,11 +22,11 @@ import java.util.ArrayList;
 
 public class JsonManage {
 
-    public static Usuari[] recuperarUsuaris() {
+    public static ArrayList<Usuari> recuperarUsuaris() {
         String state = Environment.getExternalStorageState();
         Gson general = new Gson();
         String json = null;
-        Usuari[] user = new Usuari[0];
+        ArrayList<Usuari> user = new ArrayList<Usuari>();
         if (!(state.equals(Environment.MEDIA_MOUNTED))) {
         } else {
             BufferedReader reader = null;
@@ -41,8 +41,10 @@ public class JsonManage {
                     textBuilder.append("\n");
                     json = textBuilder.toString();
                 }
-                user = general.fromJson(json, Usuari[].class);
-
+               Usuari[] usuaris = general.fromJson(json, Usuari[].class);
+                for(Usuari u : usuaris){
+                    user.add(u);
+                }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
