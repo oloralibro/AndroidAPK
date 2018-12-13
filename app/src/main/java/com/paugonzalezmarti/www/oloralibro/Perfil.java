@@ -30,7 +30,7 @@ public class Perfil extends Activity {
             for (int i=0; i < (user.getContrasenya().length() - 3); i++){
                 nice[i]='*';
             }
-            paswd = nice.toString();
+            paswd = String.valueOf(nice);
             contra.setText(paswd);
         }
 

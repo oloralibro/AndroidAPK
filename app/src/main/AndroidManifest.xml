@@ -54,6 +54,17 @@
             android:screenOrientation="portrait"
             >
         </activity>
+
+        <activity android:name=".LlibreriaIndividual"
+            android:label="Libreria Individual"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity android:name=".ActivitatIndividual"
+            android:label="Activitat Individual"
+            android:screenOrientation="portrait"
+            >
+        </activity>
     </application>
 
 </manifest>

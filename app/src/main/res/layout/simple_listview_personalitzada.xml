@@ -1,0 +1,8 @@
+<TextView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:textColor="@color/texto"
+    android:textAlignment="center"
+    android:textSize="32sp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+</TextView>

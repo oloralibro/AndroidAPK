@@ -54,13 +54,13 @@
         style="@style/campo"
         />
 
-    <com.google.android.gms.maps.MapView
+    <!--<com.google.android.gms.maps.MapView
         android:id="@+id/mapLibreria"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/lvActividades"
         style="@style/campo"
-        />
+        />-->
 
 </RelativeLayout>
