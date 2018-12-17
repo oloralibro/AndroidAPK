@@ -19,5 +19,10 @@
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
         <item name="android:layout_marginBottom">30dp</item>
     </style>
+    <style name="nombre">
+        <item name="android:layout_marginLeft">10dp</item>ç
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>

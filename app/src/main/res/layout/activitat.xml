@@ -1,92 +1,84 @@
-<LinearLayout
+<RelativeLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@drawable/grd_bg"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/tv_Actividad_Nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.3"
-        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="NombreActividad"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        />
 
     <TextView
+        android:id="@+id/tvDescripcio_Activitat_nombre"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="left"
-        android:layout_margin="10dp"
-        android:layout_weight="0.3"
+        android:layout_height="wrap_content"
         android:text="Descripción de la actividad:"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        style="@style/nombre"
+
+        android:layout_below="@+id/tv_Actividad_Nombre"/>
 
     <TextView
         android:id="@+id/tv_Actividad_Descripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/campo"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/tvDescripcio_Activitat_nombre"
         />
 
-    <LinearLayout
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/tv_Activitat_Ubicacio_nombre"
         android:layout_width="wrap_content"
-        android:layout_weight="0.5"
-        android:orientation="horizontal"
-        android:layout_gravity="left">
+        android:layout_height="wrap_content"
+        android:text="Ubicación: "
+        style="@style/nombre"
+        android:layout_above="@+id/tvPuntos_name"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Ubicación: "
-            android:textSize="25sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/tv_Actividad_Ubicacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/tv_Actividad_Ubicacion"
         android:layout_width="wrap_content"
-        android:layout_weight="0.5"
-        android:orientation="horizontal"
-        android:layout_gravity="left">
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_toRightOf="@+id/tv_Activitat_Ubicacio_nombre"
+        android:layout_above="@+id/tvPuntos_name"        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Puntos: "
-            android:textSize="25sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/tv_Actividad_Puntos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            />
+    <TextView
+        android:id="@+id/tvPuntos_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puntos: "
+        android:layout_marginTop="50dp"
+        android:layout_above="@+id/btn_Afegir_Activitat"
+        style="@style/nombre"/>
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_Actividad_Puntos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_Afegir_Activitat"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@+id/tvPuntos_name"
+        style="@style/campo"/>
+
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:layout_margin="10dp"
+        android:id="@+id/btn_Afegir_Activitat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/fer_activitat"
-        style="@style/botones"/>
-</LinearLayout>
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        style="@style/botones"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
 

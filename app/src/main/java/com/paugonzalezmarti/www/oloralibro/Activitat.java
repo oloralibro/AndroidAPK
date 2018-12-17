@@ -2,7 +2,9 @@ package com.paugonzalezmarti.www.oloralibro;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Activitat {
+import java.io.Serializable;
+
+public class Activitat implements Serializable{
     @SerializedName("id")
     private int id;
     @SerializedName("nombre")
