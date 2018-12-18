@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Libreria implements Serializable {
-    //todo cal modificar el camp de direccio per els de lat i lang i aplicar-ho al mapsActivity
     @SerializedName("latitud")
     private float latitud;
     @SerializedName("longitud")

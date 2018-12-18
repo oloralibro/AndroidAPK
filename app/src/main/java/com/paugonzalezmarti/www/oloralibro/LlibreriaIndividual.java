@@ -31,7 +31,7 @@ public class LlibreriaIndividual extends Activity{
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo Cal mostrar el mapa i fer que s'obri la aplicació de google map
+                //todo Secondary Cal mostrar el mapa com a fragment
                 Intent intent = new Intent(LlibreriaIndividual.this,MapsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("libreria", llibreria);

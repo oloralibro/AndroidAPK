@@ -55,15 +55,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         // Add a marker in Sydney and move the camera
-        //todo cal recuperar les coordenades desde la llibreria o activitat.
         LatLng sydney = new LatLng(libreria.getLatitud(), libreria.getLongitud());
-        LatLng eu = new LatLng(-25.2743988, 133.7751312);
-        LatLng spain = new LatLng(41.3818, 2.1685);
+
         float zoomlevel = 16;
         mMap.addMarker(new MarkerOptions().position(sydney).title(libreria.getNom()));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,zoomlevel));
+        
+       /*
         //cargamos los datos de la libreria i los comprovamos
-       /* switch (libreria.getId()){
+        //<editor-fold desc="Hardcoded">
+        LatLng eu = new LatLng(-25.2743988, 133.7751312);
+        LatLng spain = new LatLng(41.3818, 2.1685);
+       switch (libreria.getId()){
             case 1:
                 mMap.addMarker(new MarkerOptions().position(sydney).title(libreria.getNom()));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,zoomlevel));
@@ -76,8 +79,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().position(spain).title(libreria.getNom()));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(spain,zoomlevel));
                 break;
-        }*/
-
+        }
+        //</editor-fold>
+        */
 
         UiSettings uiSettings = mMap.getUiSettings();
         uiSettings.setMyLocationButtonEnabled(true);
