@@ -12,20 +12,31 @@ public class Libreria implements Serializable {
     private String nom;
     @SerializedName("direccion")
     private String direccio;
-    @SerializedName("horario")
-    private String horais;
+    @SerializedName("horaApertura")
+    private String horariApertura;
+    @SerializedName("horaCierre")
+    private String horariCierre;
     @SerializedName("numeroTelefono")
     private int telefon;
     @SerializedName("listaActividades")
     private ArrayList<Activitat> activitats;
 
-    public Libreria(int id, String nom, String direccio, String horais, int telefon, ArrayList<Activitat> activitats) {
+    public Libreria(int id, String nom, String direccio, String horariApertura, String horariCierre, int telefon, ArrayList<Activitat> activitats) {
         this.id = id;
         this.nom = nom;
         this.direccio = direccio;
-        this.horais = horais;
+        this.horariApertura = horariApertura;
+        this.horariCierre = horariCierre;
         this.telefon = telefon;
         this.activitats = activitats;
+    }
+
+    public String getHorariApertura() {
+        return horariApertura;
+    }
+
+    public String getHorariCierre() {
+        return horariCierre;
     }
 
     public int getId() {
@@ -38,10 +49,6 @@ public class Libreria implements Serializable {
 
     public String getDireccio() {
         return direccio;
-    }
-
-    public String getHorais() {
-        return horais;
     }
 
     public int getTelefon() {
@@ -58,7 +65,8 @@ public class Libreria implements Serializable {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", direccio='" + direccio + '\'' +
-                ", horais='" + horais + '\'' +
+                ", horariApertura='" + horariApertura + '\'' +
+                ", horariCierre='" + horariCierre + '\'' +
                 ", telefon=" + telefon +
                 ", activitats=" + activitats +
                 '}';

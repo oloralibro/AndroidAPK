@@ -1,7 +1,10 @@
 package com.paugonzalezmarti.www.oloralibro;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -10,7 +13,7 @@ public class LlibreriaIndividual extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.libreria);
         Bundle extras = this.getIntent().getExtras();
-        Libreria llibreria = (Libreria) extras.get("libreria");
+        final Libreria llibreria = (Libreria) extras.get("libreria");
 
         //Referenciar los objetos.
         TextView tvNombre = (TextView)findViewById(R.id.tvNomLibreira);
@@ -18,13 +21,24 @@ public class LlibreriaIndividual extends Activity{
         TextView tvTelefono = (TextView)findViewById(R.id.tvTelefon);
         TextView tvHorario = (TextView)findViewById(R.id.tvHorarios);
         ListView lvActividadesLibreria = (ListView)findViewById(R.id.lvActividades);
+        Button btnMapa = findViewById(R.id.btn_libreria_mapa);
 
-        tvNombre.setText(llibreria.getNom());
+        tvNombre.setText(llibreria.getNom().toUpperCase());
         tvDireccion.setText(llibreria.getDireccio());
-        tvHorario.setText(llibreria.getHorais());
+        tvHorario.setText(llibreria.getHorariApertura() + " - " + llibreria.getHorariCierre());
         String telefono = "" + llibreria.getTelefon(); //   O esto o cambiar llibreria.telefon a String
         tvTelefono.setText(telefono);
-        //todo Cal mostrar el mapa i fer que s'obri la aplicació de google map
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //todo Cal mostrar el mapa i fer que s'obri la aplicació de google map
+                Intent intent = new Intent(LlibreriaIndividual.this,MapsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("libreria", llibreria);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
     }
 }

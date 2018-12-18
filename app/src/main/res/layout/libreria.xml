@@ -11,13 +11,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:hint="Can Gabaldà"
+        android:textSize="30sp"
+        android:textStyle="bold"
         style="@style/campo"
         />
     <LinearLayout
         android:id="@+id/lvDatosLibreira"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/campo"
+        style="@style/desc"
         android:layout_below="@+id/tvNomLibreira"
         android:orientation="vertical">
 
@@ -62,5 +64,13 @@
         android:layout_below="@+id/lvActividades"
         style="@style/campo"
         />-->
+    <Button
+        android:id="@+id/btn_libreria_mapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/vermapa"
+        android:layout_marginBottom="12dp"
+        style="@style/botones"/>
 
 </RelativeLayout>

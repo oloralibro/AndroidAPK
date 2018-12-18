@@ -10,11 +10,20 @@
         <item name="android:background">@color/fondoBotones</item>
         <item name="android:textColor">@color/texto</item>
     </style>
+
     <style name="campo">
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:textColor">@color/texto</item>
         <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">#404040</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+        <item name="android:layout_marginBottom">30dp</item>
+    </style>
+    <style name="desc">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:textColor">@color/texto</item>
         <item name="android:textColorHint">#404040</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
         <item name="android:layout_marginBottom">30dp</item>

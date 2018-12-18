@@ -20,5 +20,7 @@
     <string name="editar">Editar</string>
     <string name="actividades_realizadas">Actividades realizadas:"</string>
     <string name="ok">Ok</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="vermapa">Ver Mapa</string>
 
 </resources>
