@@ -42,7 +42,7 @@ public class JsonManage {
                     textBuilder.append("\n");
                     json = textBuilder.toString();
                 }
-               Usuari[] usuaris = general.fromJson(json, Usuari[].class);
+                Usuari[] usuaris = general.fromJson(json, Usuari[].class);
                 for(Usuari u : usuaris){
                     user.add(u);
                 }
@@ -115,8 +115,8 @@ public class JsonManage {
                     textBuilder.append("\n");
                     json = textBuilder.toString();
                 }
-                Libreria[] usuaris = general.fromJson(json, Libreria[].class);
-                for(Libreria u : usuaris){
+                Libreria[] llibreries = general.fromJson(json, Libreria[].class);
+                for(Libreria u : llibreries){
                     libreria.add(u);
                 }
             } catch (FileNotFoundException e) {

@@ -1,8 +1,10 @@
 package com.paugonzalezmarti.www.oloralibro;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -26,30 +28,64 @@ public class Perfil extends Activity {
 
         Usuari user = null;
         final Bundle objetoEnviado = getIntent().getExtras();
+        final ArrayList<Usuari> usersUpdate = JsonManage.recuperarUsuaris();
+        final ArrayList<Activitat> arrayActividades = JsonManage.recuperarActivitats();
 
         if (objetoEnviado!=null){
             user = (Usuari) objetoEnviado.getSerializable("usuario");
-            puntos.setText(""+ user.getPunts());
-            nombre.setText(user.getNomUsuari().toUpperCase());
-            correu.setText(user.getCorreu());
-            String paswd = user.getContrasenya();
-            char[] nice = paswd.toCharArray();
-            if (user.isAdministrador()== true){
-                tick.setChecked(true);
+            //Actualitzem al usuari per si tingués algun canvi
+            for (Usuari usuari : usersUpdate){
+                if (usuari.getId()==user.getId()){
+                    user=usuari;
+                }
             }
-            for (int i=0; i < (user.getContrasenya().length() - 3); i++){
-                nice[i]='*';
-            }
-            paswd = String.valueOf(nice);
-            contra.setText(paswd);
-            for (Activitat activitat : user.getActivitats()){
-                nombreActividades.add(activitat.getNom().toString());
-            }
-            ArrayAdapter<String> adaptador = new ArrayAdapter<>(this,R.layout.simple_listview_personalitzada, nombreActividades);
-            llista.setAdapter(adaptador);
-            //todo Cal fer que al polsar la activitat te la mostri
-
         }
+        puntos.setText(""+ user.getPunts());
+        nombre.setText(user.getNomUsuari().toUpperCase());
+        correu.setText(user.getCorreu());
+        String paswd = user.getContrasenya();
+        char[] nice = paswd.toCharArray();
+        if (user.isAdministrador()== true){
+            tick.setChecked(true);
+        }
+        for (int i=0; i < (user.getContrasenya().length() - 3); i++){
+            nice[i]='*';
+        }
+        paswd = String.valueOf(nice);
+        contra.setText(paswd);
+        for (Activitat activitat : user.getActivitats()){
+            nombreActividades.add(activitat.getNom().toString());
+        }
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this,R.layout.simple_listview_personalitzada, nombreActividades);
+        llista.setAdapter(adaptador);
 
+        llista.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                Intent mostrarActivitat = new Intent(Perfil.this, ActivitatIndividual.class);
+                final Bundle objetoEnviado = getIntent().getExtras();
+                Usuari user = null;
+                if (objetoEnviado != null) {
+                    user = (Usuari) objetoEnviado.getSerializable("usuario");
+                    //Actualitzem al usuari per si tingués algun canvi
+                    for (Usuari usuari : usersUpdate){
+                        if (usuari.getId() == user.getId()){
+                            user = usuari;
+                        }
+                    }
+                    ArrayList<Activitat> mostrades = user.getActivitats();
+                    Activitat activitatSeleccionada = mostrades.get(i);
+
+                    objetoEnviado.putSerializable("activitat", activitatSeleccionada);
+                    objetoEnviado.putSerializable("usuario", user);
+                }
+
+                mostrarActivitat.putExtras(objetoEnviado);
+                startActivity(mostrarActivitat);
+            }
+        });
     }
 }
+

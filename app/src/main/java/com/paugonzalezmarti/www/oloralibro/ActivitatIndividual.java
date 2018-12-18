@@ -5,28 +5,46 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ActivitatIndividual extends Activity{
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onCreate(null);
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitat);
 
-        //todo Cal modificar el text de afegir activitat i desactivar el botó en cas de que la activitat estigui feta
         final Bundle objetoEnviado = getIntent().getExtras();
         Usuari user = null;
         Activitat activitatSeleccionada = null;
         if (objetoEnviado != null) {
             activitatSeleccionada = (Activitat) objetoEnviado.getSerializable("activitat");
             user = (Usuari) objetoEnviado.getSerializable("usuario");
+            ArrayList<Usuari> usersUpdate = JsonManage.recuperarUsuaris();
+            //Actualitzem al usuari per si tingués algun canvi
+            for (Usuari usuari : usersUpdate){
+                if (usuari.getId() == user.getId()){
+                    user=usuari;
+                }
+            }
             objetoEnviado.putSerializable("usuario", user);
         }
-        Button boto = findViewById(R.id.btn_Afegir_Activitat);
-        if(user.getActivitats().contains(activitatSeleccionada)){
-            boto.setText("Activitat Feta");
-            boto.setEnabled(false);
+
+
+        final Button boto = findViewById(R.id.btn_Afegir_Activitat);
+        ArrayList<Activitat> tot = user.getActivitats();
+        for (Activitat item : tot){
+            if (item.getId() == activitatSeleccionada.getId()){
+                boto.setText("Activitat Feta");
+                boto.setEnabled(false);
+            }
         }
+
 
         TextView tvNombre = (TextView)findViewById(R.id.tv_Actividad_Nombre);
         TextView tvDescripcion = (TextView)findViewById(R.id.tv_Actividad_Descripcion);
@@ -36,28 +54,30 @@ public class ActivitatIndividual extends Activity{
         tvNombre.setText(activitatSeleccionada.getNom());
         tvDescripcion.setText(activitatSeleccionada.getDescripcio());
         tvUbicacion.setText(activitatSeleccionada.getUbicacio());
+        //todo Secondari pasar de int a string
         String puntitos = "" + activitatSeleccionada.getPunts();
         tvPuntos.setText(puntitos);
         final Activitat finalActivitatSeleccionada = activitatSeleccionada;
         final Usuari finalUser = user;
-        
         boto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo Cal afegir el objecte al usuari i guardar al finalitzar-ho per evitar problemes
                 ArrayList<Activitat> lol = new ArrayList<>();
-                lol.add(finalActivitatSeleccionada);
                 ArrayList<Usuari> users = JsonManage.recuperarUsuaris();
-
+                //busquem el usuari del array i el substituim
                 for (Usuari item :users){
-                    if (item.getActivitats().contains(lol)){
-
-                    }else{
-                        finalUser.setActivitats(lol);
-                        //todo cal substituir el usuari a traves de el id i comprovar que sigui correcta la comprovacio de la activitat
-
+                    if (item.getId()==finalUser.getId()){
+                        lol = item.getActivitats();
+                        lol.add(finalActivitatSeleccionada);
+                        item.setActivitats(lol);
+                        int puntuacio = item.getPunts() + finalActivitatSeleccionada.getPunts();
+                        item.setPunts(puntuacio);
+                        boto.setText("Activitat Feta");
+                        boto.setEnabled(false);
                     }
                 }
+                JsonManage.guardarUsuaris(users);
+                Toast.makeText(ActivitatIndividual.this,"S'han guardat els canvis",Toast.LENGTH_SHORT).show();
             }
         });
 
