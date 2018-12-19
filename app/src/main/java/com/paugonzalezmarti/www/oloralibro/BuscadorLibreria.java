@@ -18,6 +18,8 @@ import java.util.List;
 
 public class BuscadorLibreria extends Activity {
     private ArrayList<String> nombreLibreria;
+    private Bundle objetoEnviado;
+    private Usuari user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,18 @@ public class BuscadorLibreria extends Activity {
         Button buscar = findViewById(R.id.btnBuscarLibreria);
         final ListView listLibrerias = findViewById(R.id.lvLibreria);
         final ArrayList<Libreria> llibreries = JsonManage.recuperarLlibreries();
+        final ArrayList<Usuari> usersUpdate = JsonManage.recuperarUsuaris();
+        objetoEnviado = getIntent().getExtras();
 
+        if (objetoEnviado != null) {
+            user = (Usuari) objetoEnviado.getSerializable("usuario");
+            //Actualitzem al usuari per si tingués algun canvi
+            for (Usuari usuari : usersUpdate) {
+                if (usuari.getId() == user.getId()) {
+                    user = usuari;
+                }
+            }
+        }
         nombreLibreria = new ArrayList<>();
         for (Libreria libreria : llibreries){
             nombreLibreria.add(libreria.getNom().toString());
@@ -47,9 +60,8 @@ public class BuscadorLibreria extends Activity {
                          llibreriaSeleccionada = item;
                     }
                 }
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("libreria", llibreriaSeleccionada);
-                mostrarActivitat.putExtras(bundle);
+                objetoEnviado.putSerializable("libreria", llibreriaSeleccionada);
+                mostrarActivitat.putExtras(objetoEnviado);
 
                 startActivity(mostrarActivitat);
             }

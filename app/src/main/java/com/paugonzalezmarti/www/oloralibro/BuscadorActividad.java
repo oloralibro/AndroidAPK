@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class BuscadorActividad extends Activity {
-    ArrayList<String> nombreActividades;
+    private ArrayList<String> nombreActividades;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
