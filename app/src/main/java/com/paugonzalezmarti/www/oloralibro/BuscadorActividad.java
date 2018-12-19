@@ -38,6 +38,7 @@ public class BuscadorActividad extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
+
                 //todo Secondari Fer que la funcio de mostrar la activitat sigui una funció statica per evitar la redundancia
                 Intent mostrarActivitat = new Intent(BuscadorActividad.this, ActivitatIndividual.class);
                 Activitat activitatSeleccionada = arrayActividades.get(i);

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BuscadorLibreria extends Activity {
+    private ArrayList<String> nombreLibreria;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,8 @@ public class BuscadorLibreria extends Activity {
         Button buscar = findViewById(R.id.btnBuscarLibreria);
         final ListView listLibrerias = findViewById(R.id.lvLibreria);
         final ArrayList<Libreria> llibreries = JsonManage.recuperarLlibreries();
-        ArrayList<String> nombreLibreria = new ArrayList<>();
+
+        nombreLibreria = new ArrayList<>();
         for (Libreria libreria : llibreries){
             nombreLibreria.add(libreria.getNom().toString());
         }
@@ -38,7 +40,13 @@ public class BuscadorLibreria extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
                 Intent mostrarActivitat = new Intent(BuscadorLibreria.this, LlibreriaIndividual.class);
-                Libreria llibreriaSeleccionada = llibreries.get(i);
+                String nomseleccionat = nombreLibreria.get(i);
+                Libreria llibreriaSeleccionada = null;
+                for (Libreria item : llibreries){
+                    if (item.getNom().equals(nomseleccionat)){
+                         llibreriaSeleccionada = item;
+                    }
+                }
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("libreria", llibreriaSeleccionada);
                 mostrarActivitat.putExtras(bundle);
@@ -52,12 +60,13 @@ public class BuscadorLibreria extends Activity {
                 EditText buscador = findViewById(R.id.etBuscadorLibreria);
                 ListView libreias = findViewById(R.id.lvLibreria);
                 ArrayList<Libreria> llibreries = JsonManage.recuperarLlibreries();
-                ArrayList<String> nombreLibreria = new ArrayList<>();
+                nombreLibreria = new ArrayList<>();
                 String nom = buscador.getText().toString();
+
 
                 for (Libreria libreria : llibreries){
                     if (libreria.getNom().toString().contains(nom))
-                        nombreLibreria.add(libreria.getNom().toString());
+                        nombreLibreria.add(libreria.getNom());
                 }
 
                 ArrayAdapter<String> adaptador = new ArrayAdapter<>(BuscadorLibreria.this, R.layout.simple_listview_personalitzada,nombreLibreria);
