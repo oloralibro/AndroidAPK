@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/login"
+    android:background="@drawable/grd_bg"
     tools:context=".MainActivity">
 
     <ImageView
@@ -23,7 +23,7 @@
         android:layout_below="@+id/ivLogo"
         android:layout_marginTop="40dp"
         android:maxLines="1"
-        android:hint="@string/example"
+        android:hint="Nombre de usuario"
         style="@style/campo"
         />
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/registro"
+    android:background="@drawable/grd_bg"
     tools:context=".Registro">
     <ImageView
         android:id="@+id/ivLogo"
