@@ -31,6 +31,7 @@ public class LlibreriaIndividual extends Activity{
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //todo Cal mostrar la activitat individual que fa aquesta llibreria.
                 //todo Secondary Cal mostrar el mapa com a fragment
                 Intent intent = new Intent(LlibreriaIndividual.this,MapsActivity.class);
                 Bundle bundle = new Bundle();

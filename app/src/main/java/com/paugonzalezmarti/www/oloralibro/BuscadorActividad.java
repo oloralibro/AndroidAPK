@@ -9,10 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class BuscadorActividad extends Activity {
+    ArrayList<String> nombreActividades;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,7 @@ public class BuscadorActividad extends Activity {
 
         //Cargamos las actividades en un ArrayList.
         final ArrayList<Activitat> arrayActividades = JsonManage.recuperarActivitats();
-        ArrayList<String> nombreActividades = new ArrayList<>();
+         nombreActividades = new ArrayList<>();
 
         for (Activitat activitat : arrayActividades){
             nombreActividades.add(activitat.getNom().toString());
@@ -41,7 +43,13 @@ public class BuscadorActividad extends Activity {
 
                 //todo Secondari Fer que la funcio de mostrar la activitat sigui una funció statica per evitar la redundancia
                 Intent mostrarActivitat = new Intent(BuscadorActividad.this, ActivitatIndividual.class);
-                Activitat activitatSeleccionada = arrayActividades.get(i);
+                String nomseleccionat = nombreActividades.get(i);
+                Activitat activitatSeleccionada = null;
+                for (Activitat item : arrayActividades){
+                    if (item.getNom().equals(nomseleccionat)){
+                        activitatSeleccionada = item;
+                    }
+                }
                 final Bundle objetoEnviado = getIntent().getExtras();
                 Usuari user = null;
                 if (objetoEnviado != null) {
@@ -59,11 +67,21 @@ public class BuscadorActividad extends Activity {
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent buscarActividad = new Intent(BuscadorActividad.this,ActivitatIndividual.class);
-                String nombreActividad = actividad.getText().toString();
-                buscarActividad.putExtra("actividad", nombreActividad);
+                EditText buscador = findViewById(R.id.etBuscadorActivitat);
+                ListView libreias = findViewById(R.id.lv_buscador_Actividad);
+                ArrayList<Activitat> llibreries = JsonManage.recuperarActivitats();
+                nombreActividades = new ArrayList<>();
+                String nom = buscador.getText().toString();
 
-                startActivity(buscarActividad);
+
+                for (Activitat libreria : llibreries){
+                    if (libreria.getNom().toString().contains(nom))
+                        nombreActividades.add(libreria.getNom());
+                }
+
+                ArrayAdapter<String> adaptador = new ArrayAdapter<>(BuscadorActividad.this, R.layout.simple_listview_personalitzada,nombreActividades);
+                libreias.setAdapter(adaptador);
+                Toast.makeText(BuscadorActividad.this,"se han recargado las librerias",Toast.LENGTH_SHORT);
             }
         });
 
