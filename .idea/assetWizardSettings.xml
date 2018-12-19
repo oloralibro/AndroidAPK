@@ -34,7 +34,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundImage" value="$PROJECT_DIR$/app/src/main/res/drawable/grd_bg.xml" />
-                                      <entry key="foregroundImage" value="$PROJECT_DIR$/app/src/main/res/drawable/logo_sgv.xml" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/app/src/main/res/drawable/logo_sgv_blanco.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
