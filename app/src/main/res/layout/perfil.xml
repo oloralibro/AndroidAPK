@@ -36,10 +36,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="5dp"
             android:layout_gravity="center_vertical"
             android:hint="120"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/texto"/>
 
         <CheckBox
             android:id="@+id/cb_perfil_SuperUser"
@@ -77,7 +77,8 @@
             android:hint="@string/example"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/texto"/>
 
     </LinearLayout>
 
@@ -102,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/paswd"
-
+            android:textColor="@color/texto"
             android:textSize="20sp"
             android:layout_margin="10dp"
             android:layout_gravity="center"/>
@@ -121,7 +122,7 @@
 
     <ListView
         android:id="@+id/lv_perfil_Actividades"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
 

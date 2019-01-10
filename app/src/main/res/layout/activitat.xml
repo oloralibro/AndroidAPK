@@ -11,10 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="NombreActividad"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="30dp"
+        style="@style/cabecera"
         />
 
     <TextView
@@ -30,7 +27,7 @@
         android:id="@+id/tv_Actividad_Descripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/campo"
+        style="@style/desc"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/tvDescripcio_Activitat_nombre"
         />
@@ -41,15 +38,17 @@
         android:layout_height="wrap_content"
         android:text="Ubicación: "
         style="@style/nombre"
-        android:layout_above="@+id/tvPuntos_name"/>
+        android:layout_below="@+id/tv_Actividad_Descripcion"
+        />
 
     <TextView
         android:id="@+id/tv_Actividad_Ubicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        style="@style/desc"
         android:layout_toRightOf="@+id/tv_Activitat_Ubicacio_nombre"
-        android:layout_above="@+id/tvPuntos_name"        />
+        android:layout_alignBaseline="@id/tv_Activitat_Ubicacio_nombre"
+        />
 
     <TextView
         android:id="@+id/tvPuntos_name"
@@ -57,7 +56,7 @@
         android:layout_height="wrap_content"
         android:text="Puntos: "
         android:layout_marginTop="50dp"
-        android:layout_above="@+id/btn_Afegir_Activitat"
+        android:layout_below="@+id/tv_Activitat_Ubicacio_nombre"
         style="@style/nombre"/>
 
     <TextView
@@ -67,6 +66,7 @@
         android:layout_above="@id/btn_Afegir_Activitat"
         android:layout_marginBottom="5dp"
         android:layout_toRightOf="@+id/tvPuntos_name"
+        android:layout_alignBaseline="@+id/tvPuntos_name"
         style="@style/campo"/>
 
 

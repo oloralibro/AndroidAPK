@@ -48,7 +48,7 @@ public class Perfil extends Activity {
         if (user.isAdministrador()== true){
             tick.setChecked(true);
         }
-        for (int i=0; i < (user.getContrasenya().length() - 3); i++){
+        for (int i=0; i < (user.getContrasenya().length() - 1); i++){
             nice[i]='*';
         }
         paswd = String.valueOf(nice);
