@@ -15,6 +15,7 @@ import com.paugonzalezmarti.www.oloralibro.Utility.Usuari;
 import java.util.ArrayList;
 
 public class ActivitatIndividual extends Activity{
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -24,6 +25,7 @@ public class ActivitatIndividual extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitat);
 
+        //Capturem les dades
         final Bundle objetoEnviado = getIntent().getExtras();
         Usuari user = null;
         Activitat activitatSeleccionada = null;

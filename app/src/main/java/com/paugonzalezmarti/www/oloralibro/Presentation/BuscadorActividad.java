@@ -39,7 +39,7 @@ public class BuscadorActividad extends Activity {
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this,R.layout.simple_listview_personalitzada, nombreActividades);
         listActividades.setAdapter(adaptador);
 
-//Evento para que se muestren los datos de la actividad seleccionada en la lista
+        //Evento para que se muestren los datos de la actividad seleccionada en la lista
         listActividades.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -68,7 +68,7 @@ public class BuscadorActividad extends Activity {
             }
         });
 
-        // editText buscador
+        //Recarga los datos de la lista con los nuevos elementos buscados
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

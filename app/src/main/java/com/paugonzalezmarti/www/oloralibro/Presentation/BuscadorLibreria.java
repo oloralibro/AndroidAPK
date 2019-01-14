@@ -26,12 +26,14 @@ public class BuscadorLibreria extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.buscador_librerias);
+
         Button buscar = findViewById(R.id.btnBuscarLibreria);
         final ListView listLibrerias = findViewById(R.id.lvLibreria);
+
+        //Capturem les dades
         final ArrayList<Libreria> llibreries = JsonManage.recuperarLlibreries();
         final ArrayList<Usuari> usersUpdate = JsonManage.recuperarUsuaris();
         objetoEnviado = getIntent().getExtras();
-
         if (objetoEnviado != null) {
             user = (Usuari) objetoEnviado.getSerializable("usuario");
             //Actualitzem al usuari per si tingués algun canvi
@@ -41,6 +43,8 @@ public class BuscadorLibreria extends Activity {
                 }
             }
         }
+
+        //Injectem les dades
         nombreLibreria = new ArrayList<>();
         for (Libreria libreria : llibreries){
             nombreLibreria.add(libreria.getNom().toString());
@@ -68,6 +72,7 @@ public class BuscadorLibreria extends Activity {
                 startActivity(mostrarActivitat);
             }
         });
+        //Recarga los datos de la lista con los elementos que contengan lo buscado
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

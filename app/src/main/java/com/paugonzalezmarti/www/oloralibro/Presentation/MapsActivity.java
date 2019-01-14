@@ -25,6 +25,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        //Comprovacions de conexió
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if ( status == ConnectionResult.SUCCESS){
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -50,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         final Bundle objetoEnviado = getIntent().getExtras();
+        //Capturem les dades
         Libreria libreria = null;
         if (objetoEnviado != null) {
             libreria = (Libreria) objetoEnviado.getSerializable("libreria");
@@ -63,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title(libreria.getNom()));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,zoomlevel));
         
-       /*
+       /*//Elements de demo
         //cargamos los datos de la libreria i los comprovamos
         //<editor-fold desc="Hardcoded">
         LatLng eu = new LatLng(-25.2743988, 133.7751312);
@@ -85,6 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //</editor-fold>
         */
 
+       //Configuració del mapa
         UiSettings uiSettings = mMap.getUiSettings();
         uiSettings.setMyLocationButtonEnabled(true);
         uiSettings.isMyLocationButtonEnabled();

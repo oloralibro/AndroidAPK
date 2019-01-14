@@ -36,6 +36,7 @@ public class Registro extends Activity {
         }
 
         final ArrayList<Usuari> finalTotal = total;
+        //Validara les dades i crearà un usuari
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +46,8 @@ public class Registro extends Activity {
                 String email = correo.getText().toString();
                 String contra = contrasenya.getText().toString();
                 String recontra = recontrasenya.getText().toString();
+
+                //Control d'errors
                 if ((nomusuari.isEmpty() && (contra.isEmpty()))) {
                     Toast.makeText(Registro.this, "Siusplau introdueix un usuari i una contrasenya", LENGTH_SHORT).show();
                 } else if (email.isEmpty()) {

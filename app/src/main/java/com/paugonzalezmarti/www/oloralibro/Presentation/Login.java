@@ -42,7 +42,7 @@ public class Login extends Activity  {
         final ArrayList<Usuari> usuaris = JsonManage.recuperarUsuaris();
         //recuperem les dades de els usuaris per utilitzarlos despres
 
-
+        //Forcem a demanar els permisos
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_ACCES_FINE);
         }
@@ -59,7 +59,6 @@ public class Login extends Activity  {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_NETWORK_STATE}, REQUEST_ACCES_FINE);
         }
 
-        //Obrim la pagina de registre al polsar al text de registre.
 
         //Ens loguejarem
         logearse.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +115,7 @@ public class Login extends Activity  {
             }
         });
 
+        //Obrim la pagina de registre al polsar al text de registre.
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +128,7 @@ public class Login extends Activity  {
         });
     }
 
-    @Override
+    @Override //Metode per donar feedback de la request de permisos
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode,permissions, grantResults);
         if (requestCode == REQUEST_ACCES_FINE ) {

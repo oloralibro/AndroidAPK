@@ -26,9 +26,10 @@ public class LlibreriaIndividual extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.libreria);
+
+        //Capturem les dades
         final ArrayList<Usuari> usersUpdate = JsonManage.recuperarUsuaris();
         objetoEnviado = getIntent().getExtras();
-
         if (objetoEnviado != null) {
             llibreria = (Libreria) objetoEnviado.getSerializable("libreria");
             user = (Usuari) objetoEnviado.getSerializable("usuario");
@@ -39,6 +40,7 @@ public class LlibreriaIndividual extends Activity{
                 }
             }
         }
+
         //Referencies dels objectes.
         TextView tvNombre = (TextView)findViewById(R.id.tvNomLibreira);
         TextView tvDireccion = (TextView)findViewById(R.id.tvDireccio);
@@ -51,7 +53,7 @@ public class LlibreriaIndividual extends Activity{
         tvNombre.setText(llibreria.getNom().toUpperCase());
         tvDireccion.setText(llibreria.getDireccio());
         tvHorario.setText("Horari: " + llibreria.getHorari());
-        String telefono = "" + llibreria.getTelefon(); //   O esto o cambiar llibreria.telefon a String
+        String telefono = "Telefon: " + llibreria.getTelefon();
         tvTelefono.setText(telefono);
 
         //Aqui busquem les activitats fetes per el usuari

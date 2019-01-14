@@ -16,17 +16,20 @@ public class Menu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        //Intanciem els objectes
         Usuari user = null;
         Button btnPerfil = (Button) findViewById(R.id.btnPerfil);
         Button btnLibrerias = (Button) findViewById(R.id.btnLibrerias);
         Button btnActividades = (Button) findViewById(R.id.btnActividades);
 
+        //Capturem les dades
         final Bundle objetoEnviado = getIntent().getExtras();
         if (objetoEnviado != null) {
             user = (Usuari) objetoEnviado.getSerializable("usuario");
             objetoEnviado.putSerializable("usuario", user);
         }
 
+        //Ens mostra el perfil
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +39,7 @@ public class Menu extends Activity {
             }
         });
 
+        //Ens mostra el buscador de llibreries
         btnLibrerias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +49,7 @@ public class Menu extends Activity {
             }
         });
 
+        //Ens mostra el buscador d'activitats
         btnActividades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -22,6 +22,8 @@ public class Perfil extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil);
+
+        //Instanciem els objectes
         TextView puntos = findViewById(R.id.tv_perfil_Puntos);
         TextView nombre = findViewById(R.id.tv_perfil_NameUser);
         TextView correu = findViewById(R.id.tv_perfil_Correo);
@@ -30,11 +32,11 @@ public class Perfil extends Activity {
         ListView llista = findViewById(R.id.lv_perfil_Actividades);
         CheckBox tick = findViewById(R.id.cb_perfil_SuperUser);
 
+        //Capturem les dades
         Usuari user = null;
         final Bundle objetoEnviado = getIntent().getExtras();
         final ArrayList<Usuari> usersUpdate = JsonManage.recuperarUsuaris();
         final ArrayList<Activitat> arrayActividades = JsonManage.recuperarActivitats();
-
         if (objetoEnviado!=null){
             user = (Usuari) objetoEnviado.getSerializable("usuario");
             //Actualitzem al usuari per si tingués algun canvi
@@ -44,6 +46,8 @@ public class Perfil extends Activity {
                 }
             }
         }
+
+        //Injectem les dades
         puntos.setText(""+ user.getPunts());
         nombre.setText(user.getNomUsuari().toUpperCase());
         correu.setText(user.getCorreu());
@@ -63,6 +67,7 @@ public class Perfil extends Activity {
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this,R.layout.simple_listview_personalitzada, nombreActividades);
         llista.setAdapter(adaptador);
 
+        //Ens mostra el detall de la activitat seleccionada
         llista.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
