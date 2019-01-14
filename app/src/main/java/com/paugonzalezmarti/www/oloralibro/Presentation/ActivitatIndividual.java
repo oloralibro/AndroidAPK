@@ -1,4 +1,4 @@
-package com.paugonzalezmarti.www.oloralibro;
+package com.paugonzalezmarti.www.oloralibro.Presentation;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.paugonzalezmarti.www.oloralibro.Utility.Activitat;
+import com.paugonzalezmarti.www.oloralibro.Utility.JsonManage;
+import com.paugonzalezmarti.www.oloralibro.R;
+import com.paugonzalezmarti.www.oloralibro.Utility.Usuari;
 
 import java.util.ArrayList;
 

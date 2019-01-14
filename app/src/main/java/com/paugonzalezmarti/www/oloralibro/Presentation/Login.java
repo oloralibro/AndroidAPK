@@ -1,13 +1,11 @@
-package com.paugonzalezmarti.www.oloralibro;
+package com.paugonzalezmarti.www.oloralibro.Presentation;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,19 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.paugonzalezmarti.www.oloralibro.R;
+import com.paugonzalezmarti.www.oloralibro.Utility.JsonManage;
+import com.paugonzalezmarti.www.oloralibro.Utility.Usuari;
+
 import java.util.ArrayList;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
-public class MainActivity extends Activity  {
+public class Login extends Activity  {
     private final int REQUEST_ACCES_FINE = 0;
 
     @Override
@@ -79,13 +73,13 @@ public class MainActivity extends Activity  {
                 int id = 0;
 
                 if ((user.isEmpty() && (pass.isEmpty()))) {
-                    Toast.makeText(MainActivity.this, "Siusplau introdueix un usuari i una contrasenya", LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Siusplau introdueix un usuari i una contrasenya", LENGTH_SHORT).show();
 
                 } else if (user.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Siusplau introdueix un usuari", LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Siusplau introdueix un usuari", LENGTH_SHORT).show();
 
                 } else if (pass.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Siusplau introdueix una contrasenya", LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Siusplau introdueix una contrasenya", LENGTH_SHORT).show();
 
                 } else if((!pass.isEmpty())&&(!user.isEmpty())) {
                     int i = 0;
@@ -108,15 +102,15 @@ public class MainActivity extends Activity  {
                     }
 
                     if (correcto==true) {
-                        Intent menu = new Intent(MainActivity.this, Menu.class);
+                        Intent menu = new Intent(Login.this, Menu.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("usuario",usuari);
                         menu.putExtras(bundle);
                         startActivity(menu);
                     }else if(existe==true) {
-                        Toast.makeText(MainActivity.this, "La contraseña es incorrecte", LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "La contraseña es incorrecte", LENGTH_SHORT).show();
                     } else if(noexiste==true) {
-                        Toast.makeText(MainActivity.this, "El usuari no existex a la nostra base de dades", LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "El usuari no existex a la nostra base de dades", LENGTH_SHORT).show();
                     }
                 }
             }
@@ -125,7 +119,7 @@ public class MainActivity extends Activity  {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registro = new Intent(MainActivity.this,Registro.class);
+                Intent registro = new Intent(Login.this,Registro.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("total",usuaris);
                 registro.putExtras(bundle);

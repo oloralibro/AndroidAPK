@@ -1,4 +1,4 @@
-package com.paugonzalezmarti.www.oloralibro;
+package com.paugonzalezmarti.www.oloralibro.Presentation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.paugonzalezmarti.www.oloralibro.Utility.Activitat;
+import com.paugonzalezmarti.www.oloralibro.Utility.JsonManage;
+import com.paugonzalezmarti.www.oloralibro.Utility.Libreria;
+import com.paugonzalezmarti.www.oloralibro.R;
+import com.paugonzalezmarti.www.oloralibro.Utility.Usuari;
 
 import java.util.ArrayList;
 
@@ -33,7 +39,7 @@ public class LlibreriaIndividual extends Activity{
                 }
             }
         }
-        //Referenciar los objetos.
+        //Referencies dels objectes.
         TextView tvNombre = (TextView)findViewById(R.id.tvNomLibreira);
         TextView tvDireccion = (TextView)findViewById(R.id.tvDireccio);
         TextView tvTelefono = (TextView)findViewById(R.id.tvTelefon);
@@ -41,18 +47,23 @@ public class LlibreriaIndividual extends Activity{
         ListView lvActividadesLibreria = (ListView)findViewById(R.id.lvActividades);
         Button btnMapa = findViewById(R.id.btn_libreria_mapa);
 
+        //Injeccio de les dades
         tvNombre.setText(llibreria.getNom().toUpperCase());
         tvDireccion.setText(llibreria.getDireccio());
-        tvHorario.setText(llibreria.getHorariApertura() + " - " + llibreria.getHorariCierre());
+        tvHorario.setText("Horari: " + llibreria.getHorari());
         String telefono = "" + llibreria.getTelefon(); //   O esto o cambiar llibreria.telefon a String
         tvTelefono.setText(telefono);
-        nombreActivitat = new ArrayList<>();
 
+        //Aqui busquem les activitats fetes per el usuari
+        nombreActivitat = new ArrayList<>();
         for (Activitat libreria : llibreria.getActivitats()){
             nombreActivitat.add(libreria.getNom());
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.simple_listview_personalitzada,nombreActivitat);
         lvActividadesLibreria.setAdapter(adapter);
+
+        //Esdeveniments
+        //Aquest mostra els detalls de la activitat seleccionada
         lvActividadesLibreria.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -67,10 +78,10 @@ public class LlibreriaIndividual extends Activity{
             }
         });
 
+        //Aquesta mostra la ubicació de la llibreria en un mapa
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo Cal mostrar la activitat individual que fa aquesta llibreria.
                 //todo Secondary Cal mostrar el mapa com a fragment
                 Intent intent = new Intent(LlibreriaIndividual.this,MapsActivity.class);
                 Bundle bundle = new Bundle();

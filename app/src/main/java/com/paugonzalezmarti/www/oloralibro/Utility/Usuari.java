@@ -1,6 +1,7 @@
-package com.paugonzalezmarti.www.oloralibro;
+package com.paugonzalezmarti.www.oloralibro.Utility;
 
 import com.google.gson.annotations.SerializedName;
+import com.paugonzalezmarti.www.oloralibro.Utility.Activitat;
 
 import java.io.Serializable;
 import java.util.ArrayList;

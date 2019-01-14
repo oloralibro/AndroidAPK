@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Presentation.Login"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
@@ -30,31 +30,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Registro"
+            android:name=".Presentation.Registro"
             android:label="Registro"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".Menu"
+            android:name=".Presentation.Menu"
             android:label="Menu"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".BuscadorActividad"
+            android:name=".Presentation.BuscadorActividad"
             android:label="Buscador Actividad"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".BuscadorLibreria"
+            android:name=".Presentation.BuscadorLibreria"
             android:label="Buscador Libreria"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".Perfil"
+            android:name=".Presentation.Perfil"
             android:label="Perfil"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".LlibreriaIndividual"
+            android:name=".Presentation.LlibreriaIndividual"
             android:label="Libreria Individual"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".ActivitatIndividual"
+            android:name=".Presentation.ActivitatIndividual"
             android:label="Activitat Individual"
             android:screenOrientation="portrait"></activity>
         <!--
@@ -70,7 +70,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".Presentation.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
     </application>
 

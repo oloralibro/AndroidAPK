@@ -1,4 +1,4 @@
-package com.paugonzalezmarti.www.oloralibro;
+package com.paugonzalezmarti.www.oloralibro.Presentation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,13 +8,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.Serializable;
+import com.paugonzalezmarti.www.oloralibro.R;
+import com.paugonzalezmarti.www.oloralibro.Utility.JsonManage;
+import com.paugonzalezmarti.www.oloralibro.Utility.Libreria;
+import com.paugonzalezmarti.www.oloralibro.Utility.Usuari;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class BuscadorLibreria extends Activity {
     private ArrayList<String> nombreLibreria;

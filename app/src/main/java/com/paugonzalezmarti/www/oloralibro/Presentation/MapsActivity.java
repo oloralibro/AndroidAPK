@@ -1,4 +1,4 @@
-package com.paugonzalezmarti.www.oloralibro;
+package com.paugonzalezmarti.www.oloralibro.Presentation;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -14,6 +14,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.paugonzalezmarti.www.oloralibro.R;
+import com.paugonzalezmarti.www.oloralibro.Utility.Libreria;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 

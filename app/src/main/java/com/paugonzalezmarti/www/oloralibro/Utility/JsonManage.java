@@ -1,15 +1,8 @@
-package com.paugonzalezmarti.www.oloralibro;
+package com.paugonzalezmarti.www.oloralibro.Utility;
 
-import android.Manifest;
-import android.app.Activity;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,6 +16,7 @@ import java.util.ArrayList;
 public class JsonManage {
 
     //<editor-fold desc="Usuaris">
+    //Capturem els usuaris que hi ha al respectiu arxiu JSON
     public static ArrayList<Usuari> recuperarUsuaris() {
         String state = Environment.getExternalStorageState();
         Gson general = new Gson();
@@ -37,6 +31,7 @@ public class JsonManage {
                 reader = new BufferedReader(new FileReader(textFile));
                 StringBuilder textBuilder = new StringBuilder();
                 String line;
+                //Tot i que no hauria, pot ser que el JSON vingui amb més d'una linea i ho controlem aqui
                 while ((line = reader.readLine()) != null) {
                     textBuilder.append(line);
                     textBuilder.append("\n");
@@ -65,6 +60,7 @@ public class JsonManage {
         return user;
     }
 
+    //Guardem el llistat amb tots els usuaris al fitxer JSON
     public static void guardarUsuaris(ArrayList<Usuari> users) {
         Gson general = new Gson();
         String resposta = general.toJson(users);
@@ -96,6 +92,7 @@ public class JsonManage {
     //</editor-fold>
 
     //<editor-fold desc="Librerias">
+    //Capturem les llibreries que hi ha al respectiu arxiu JSON
     public static ArrayList<Libreria> recuperarLlibreries() {
         String state = Environment.getExternalStorageState();
         Gson general = new Gson();
@@ -110,6 +107,7 @@ public class JsonManage {
                 reader = new BufferedReader(new FileReader(textFile));
                 StringBuilder textBuilder = new StringBuilder();
                 String line;
+                //Tot i que no hauria, pot ser que el JSON vingui amb més d'una linea i ho controlem aqui
                 while ((line = reader.readLine()) != null) {
                     textBuilder.append(line);
                     textBuilder.append("\n");
@@ -138,6 +136,7 @@ public class JsonManage {
         return libreria;
     }
 
+    //Guardem el llistat amb totes les llibreries al fitxer JSON
     public static void guardarLlibreries(ArrayList<Libreria> users) {
         Gson general = new Gson();
         String resposta = general.toJson(users);
@@ -169,6 +168,7 @@ public class JsonManage {
     //</editor-fold>
 
     //<editor-fold desc="Activitats" >
+    //Capturem les activitats que hi ha al respectiu arxiu JSON
     public static ArrayList<Activitat> recuperarActivitats() {
         String state = Environment.getExternalStorageState();
         Gson general = new Gson();
@@ -183,6 +183,7 @@ public class JsonManage {
                 reader = new BufferedReader(new FileReader(textFile));
                 StringBuilder textBuilder = new StringBuilder();
                 String line;
+                //Tot i que no hauria, pot ser que el JSON vingui amb més d'una linea i ho controlem aqui
                 while ((line = reader.readLine()) != null) {
                     textBuilder.append(line);
                     textBuilder.append("\n");
@@ -211,6 +212,7 @@ public class JsonManage {
         return user;
     }
 
+    //Guardem el llistat amb totes les activitats al fitxer JSON
     public static void guardarActivitats(ArrayList<Activitat> users) {
         Gson general = new Gson();
         String resposta = general.toJson(users);
